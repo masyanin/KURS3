@@ -19,7 +19,7 @@ export const authRoutes = [
         Component: ADMIN
     },
     {
-        path: COMPANYPAGE_ROUTE + '/:id',
+        path: COMPANYPAGE_ROUTE,
         Component: Companypage
     }
 ]

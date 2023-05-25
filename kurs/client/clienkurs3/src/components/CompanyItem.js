@@ -1,0 +1,59 @@
+import React from 'react';
+import {Button, Container, Image, Row} from "react-bootstrap";
+import '../compstyles/SCompanyItem.css'
+import A from '../assets/A2.jpg'
+import B from '../assets/A3.jpg'
+import Cgraph from "./componentsFunc/Cgraph";
+import Cstudy from "./componentsFunc/Cstudy";
+import CtypeW from "./componentsFunc/CtypeW";
+import CworkE from "./componentsFunc/CworkE";
+//graph:0,study:0,workE:0,typeW:0
+
+const CompanyItem = ({company}) => {
+    let st=''
+    let wo=''
+    let ty=''
+    return (
+        <div className="SItem">
+            <div className="SItem_layout">
+                <div className="p-2">
+                    <h2 className="d-flex justify-content-start">
+                        {company.name}
+                    </h2>
+                    <h4>
+                        {company.salary} руб.
+                    </h4>
+                    <h5>
+                        {company.nameC}
+                    </h5>
+                    <div>
+                        График работы: {Cgraph({company})}
+                    </div>
+                    <div>
+                        Требуемое образование: {Cstudy({company})}
+                    </div>
+                    <div>
+                        Требуемый опыт работы: {CworkE({company})}
+                    </div>
+                    <div>
+                        Вид работы: {CtypeW({company})}
+                    </div>
+                </div>
+                <div className="justify-content-end p-2 mt-4">
+                    <Container>
+                        <Row className="mb-2">
+                            <div style={{borderRadius:"15px"}}>
+                                <Image className="SImg" src={B} rounded/>
+                            </div>
+                        </Row>
+                        <Row>
+                            <Button className="SBut" style={{cursor:"pointer"}} variant="outline-dark">Тест</Button>
+                        </Row>
+                    </Container>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default CompanyItem;
