@@ -4,6 +4,7 @@
     flex-flow: row nowrap;
 }
 .Filtwrapper{
+    margin-left: 50px;
     border: 1px solid transparent;
     padding: 15px;
     position: relative;

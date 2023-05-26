@@ -1,7 +1,6 @@
 import React from 'react';
 import {Button, Container, Image, Row} from "react-bootstrap";
 import '../compstyles/SCompanyItem.css'
-import A from '../assets/A2.jpg'
 import B from '../assets/A3.jpg'
 import Cgraph from "./componentsFunc/Cgraph";
 import Cstudy from "./componentsFunc/Cstudy";

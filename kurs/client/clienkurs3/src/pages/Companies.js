@@ -1,6 +1,5 @@
 import React from 'react';
 import {Outlet} from "react-router-dom";
-import {Container} from "react-bootstrap";
 import CompanyList from "../components/CompanyList";
 import Filterlist from "../components/filterlist";
 import '../compstyles/SCFilter.css'
