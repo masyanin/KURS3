@@ -17,11 +17,8 @@ export const authRoutes = [
     {
         path: ADMIN_ROUTE,
         Component: ADMIN
-    },
-    {
-        path: COMPANYPAGE_ROUTE,
-        Component: Companypage
     }
+
 ]
 export const publicRoutes = [
     {
@@ -43,5 +40,9 @@ export const publicRoutes = [
     {
         path: WORKERS_ROUTE,
         Component: Workers
+    },
+    {
+        path: COMPANYPAGE_ROUTE +'/:id',
+        Component: Companypage
     }
 ]

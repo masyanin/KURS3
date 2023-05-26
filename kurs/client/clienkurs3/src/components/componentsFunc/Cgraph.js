@@ -1,7 +1,6 @@
 
 const Cgraph = ({company}) => {
     let gr=''
-    console.log(company.graph)
     switch (company.graph){
         case 0:
             gr = 'Не указан'

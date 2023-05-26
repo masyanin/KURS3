@@ -2,13 +2,21 @@ import React from 'react';
 import {Button, Container, Image, Row} from "react-bootstrap";
 import '../compstyles/SCompanyItem.css'
 import B from '../assets/A3.jpg'
+import {useNavigate} from "react-router-dom";
+import {COMPANYPAGE_ROUTE} from "../utils/consts";
 import Cgraph from "./componentsFunc/Cgraph";
 import Cstudy from "./componentsFunc/Cstudy";
 import CtypeW from "./componentsFunc/CtypeW";
 import CworkE from "./componentsFunc/CworkE";
 //graph:0,study:0,workE:0,typeW:0
 
+
 const CompanyItem = ({company}) => {
+    console.log(company)
+    let navigate=useNavigate()
+    function handleclick({company}){
+        navigate(COMPANYPAGE_ROUTE+'/'+ company.id)
+    }
     let st=''
     let wo=''
     let ty=''
@@ -46,7 +54,7 @@ const CompanyItem = ({company}) => {
                             </div>
                         </Row>
                         <Row>
-                            <Button className="SBut" style={{cursor:"pointer"}} variant="outline-dark">Тест</Button>
+                            <Button className="SBut" style={{cursor:"pointer"}} variant="outline-dark" onClick={()=>handleclick({company})} >Тест</Button>
                         </Row>
                     </Container>
                 </div>
