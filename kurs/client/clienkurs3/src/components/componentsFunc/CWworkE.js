@@ -1,7 +1,7 @@
 const CWworkE = ({worker}) => {
     let wo=''
 
-    switch (worker.typeW) {
+    switch (worker.work_e) {
         case 0:
             wo = 'Не имеет значения'
             break;

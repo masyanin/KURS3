@@ -1,7 +1,7 @@
 
 const CtypeW = ({company}) => {
     let ty=''
-    switch (company.typeW){
+    switch (company.type_w){
         case 0:
             ty = 'Любой'
             break;

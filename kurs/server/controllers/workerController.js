@@ -1,6 +1,6 @@
 const uuid = require("uuid");
 const path = require("path");
-const {Worker}=require('../models/models');
+const {Worker, Company}=require('../models/models');
 const ApiError = require('../error/ApiError');
 const {Sequelize} = require("sequelize");
 const { Op } = require('sequelize');
@@ -55,7 +55,15 @@ class workerController{
         console.log(workers)
         return res.json(workers)
     }
-
+    async getOne(req,res) {
+        const {id} = req.params
+        const worker = await Worker.findOne(
+            {
+                where: {id}
+                //include:[{model: Test_tab, as:'test'}]
+            })
+        return res.json(worker)
+    }
 }
 
 module.exports = new workerController()

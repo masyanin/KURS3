@@ -10,14 +10,7 @@ export default class WorkerStore{
             {id:1, vac_n:'JS'},
             {id:2, vac_n:'C++'}
         ]
-        this._work = [
-            {id:1,fio:'Яндекс',name:'Python programmer',salary: 100000,gender:0,grad:0,workE:0,typeW:1,statusF:0,img:'https://www.rosphoto.com/images/u/articles/1510/4_8.jpg'},
-            {id:2,fio:'Касперский',name:'C++ programmer',salary: 200000,gender:1,grad:3,workE:2,typeW:3,statusF:3,img:'https://www.rosphoto.com/images/u/articles/1510/4_8.jpg'},
-            {id:3,fio:'Касперский',name:'1C programmer',salary: 200000,gender:1,grad:4,workE:0,typeW:2,statusF:2,img:'https://www.rosphoto.com/images/u/articles/1510/4_8.jpg'},
-            {id:4,fio:'Касперский',name:'JS programmer',salary: 200000,gender:0,grad:2,workE:3,typeW:3,statusF:1,img:'https://www.rosphoto.com/images/u/articles/1510/4_8.jpg'},
-            {id:5,fio:'Касперский',name:'C++ programmer',salary: 200000,gender:0,grad:3,workE:0,typeW:3,statusF:0,img:'https://www.rosphoto.com/images/u/articles/1510/4_8.jpg'}
-
-        ]
+        this._work = []
         makeAutoObservable(this)
     }
 
@@ -27,7 +20,7 @@ export default class WorkerStore{
     setVac(vac){
         this._vac = vac
     }
-    setComp(work){
+    setWork(work){
         this._work = work
     }
 

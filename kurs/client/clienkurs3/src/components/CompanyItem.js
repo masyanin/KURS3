@@ -8,18 +8,16 @@ import Cgraph from "./componentsFunc/Cgraph";
 import Cstudy from "./componentsFunc/Cstudy";
 import CtypeW from "./componentsFunc/CtypeW";
 import CworkE from "./componentsFunc/CworkE";
+import * as Process from "process";
 //graph:0,study:0,workE:0,typeW:0
 
 
 const CompanyItem = ({company}) => {
-    console.log(company)
     let navigate=useNavigate()
     function handleclick({company}){
         navigate(COMPANYPAGE_ROUTE+'/'+ company.id)
     }
-    let st=''
-    let wo=''
-    let ty=''
+
     return (
         <div className="SItem">
             <div className="SItem_layout">
@@ -31,7 +29,7 @@ const CompanyItem = ({company}) => {
                         {company.salary} руб.
                     </h4>
                     <h5>
-                        {company.nameC}
+                        {company.name_c}
                     </h5>
                     <div>
                         График работы: {Cgraph({company})}
@@ -50,7 +48,7 @@ const CompanyItem = ({company}) => {
                     <Container>
                         <Row className="mb-2">
                             <div style={{borderRadius:"15px"}}>
-                                <Image className="SImg" src={B} rounded/>
+                                <Image className="SImg" src={process.env.REACT_APP_API_URL + company.img} rounded/>
                             </div>
                         </Row>
                         <Row>

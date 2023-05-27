@@ -7,6 +7,7 @@ import App from './App';
 
 export const Context = createContext(null)
 
+
 const domNode = document.getElementById('root')
 const root = createRoot(domNode)
 root.render(

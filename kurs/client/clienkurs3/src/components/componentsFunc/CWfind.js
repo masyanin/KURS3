@@ -1,7 +1,7 @@
 const CWfind = ({worker}) => {
     let fi=''
 
-    switch (worker.statusF) {
+    switch (worker.status_f) {
         case 0:
             fi = ' Без статуса'
             break;

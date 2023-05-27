@@ -29,30 +29,32 @@ class companyController{
     }
     async getAll(req,res){
         let {page,limit,salary_w,study_w,graph_w,work_e_w,type_w_w}=req.query
+        console.log('FUCK',page,limit,salary_w,study_w,graph_w,work_e_w,type_w_w)
         page = Number(page) || 1
         limit = Number(limit) || 9
         salary_w = salary_w || -1
         graph_w = graph_w || 0
         study_w = study_w || 0
-        work_e_w = work_e_w ||0
-        type_w_w = type_w_w ||0
-        let zerog = []
-        let zeros = []
-        let zerow = []
-        let zerot = []
+        work_e_w = work_e_w || 0
+        type_w_w = type_w_w || 0
+        let zerog = [100]
+        let zeros = [100]
+        let zerow = [100]
+        let zerot = [100]
         let offset = page * limit - limit
         if (graph_w==0) {
-            zerog = [1,2,3,4,5,6]
+            zerog = [1,2,3,4,5,6,7,8,9]
         }
         if (study_w==0){
-            zeros = [1,2,3,4,5,6]
+            zeros = [1,2,3,4,5,6,7,8,9]
         }
         if (work_e_w==0) {
-            zerow = [1,2,3,4,5,6]
+            zerow = [1,2,3,4,5,6,7,8,9]
         }
         if (type_w_w==0){
-            zerot = [1,2,3,4,5,6]
+            zerot = [1,2,3,4,5,6,7,8,9]
         }
+
         const companies = await Company.findAndCountAll({where:Sequelize.and(
                 Sequelize.or({salary: {[Op.gte]: salary_w} },{salary:0}),
                 Sequelize.or({graph:graph_w},{graph:{[Op.in]:zerog}}),
@@ -66,8 +68,7 @@ class companyController{
         const {id} = req.params
         const company = await Company.findOne(
             {
-                where:{id},
-                include:[{model: Test_tab, as:'test'}]
+                where:{id}
             })
         return res.json(company)
     }

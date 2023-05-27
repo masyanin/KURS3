@@ -1,6 +1,6 @@
 const CWtypeW = ({worker}) => {
     let ty=''
-    switch (worker.typeW){
+    switch (worker.type_w){
         case 0:
             ty = 'Любой'
             break;

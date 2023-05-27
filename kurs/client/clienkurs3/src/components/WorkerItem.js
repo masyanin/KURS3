@@ -7,10 +7,15 @@ import CWstudy from "./componentsFunc/CWstudy";
 import CWtypeW from "./componentsFunc/CWtypeW";
 import CWworkE from "./componentsFunc/CWworkE";
 import CWfind from "./componentsFunc/CWfind";
+import {useNavigate} from "react-router-dom";
+import {WORKERPAGE_ROUTE} from "../utils/consts";
 //graph:0,study:0,workE:0,typeW:0
 
 const WorkerItem = ({worker}) => {
-
+    let navigate=useNavigate()
+    function handleclick({worker}){
+        navigate(WORKERPAGE_ROUTE+'/'+ worker.id)
+    }
     return (
         <div className="SItem">
             <div className="SItem_layout">
@@ -26,10 +31,10 @@ const WorkerItem = ({worker}) => {
                         Статус поиска:{CWfind({worker})}
                     </div>
                     <div>
-                        Требуемое образование: {CWstudy({worker})}
+                        Образование: {CWstudy({worker})}
                     </div>
                     <div>
-                        Требуемый опыт работы: {CWworkE({worker})}
+                        Опыт работы: {CWworkE({worker})}
                     </div>
                     <div>
                         Вид работы: {CWtypeW({worker})}
@@ -41,7 +46,7 @@ const WorkerItem = ({worker}) => {
 
                         </Row>
                         <Row>
-                            <Button className="SBut1" style={{cursor:"pointer"}} variant="outline-dark">Подробнее</Button>
+                            <Button className="SBut1" style={{cursor:"pointer"}} variant="outline-dark" onClick={()=>handleclick({worker})}>Подробнее</Button>
                         </Row>
                     </Container>
                 </div>

@@ -3,7 +3,7 @@
 const CworkE = ({company}) => {
     let wo=''
 
-    switch (company.typeW) {
+    switch (company.work_e) {
         case 0:
             wo = 'Не имеет значения'
             break;

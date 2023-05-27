@@ -2,41 +2,81 @@ import {makeAutoObservable} from "mobx";
 
 export default class CpageStore{
     constructor() {
-        this._us =[
-            {id:1, email:'test@',passsword:'rofl',role:'USER'},
-            {id:2, email:'test1@mail.ru',passsword:'rofl',role:'USER'}
-        ]
-        this._vac =[
-            {id:1, vac_n:'JS'},
-            {id:2, vac_n:'C++'}
-        ]
-        this._comp = [
-            {id:1,nameC:'Яндекс',name:'Python programmer',salary: 100000,graph:2,study:0,workE:0,typeW:1,img:'https://www.rosphoto.com/images/u/articles/1510/4_8.jpg'},
-            {id:2,nameC:'Касперский',name:'C++ programmer',salary: 200000,graph:0,study:3,workE:0,typeW:3,img:'https://www.rosphoto.com/images/u/articles/1510/4_8.jpg'},
-            {id:3,nameC:'Касперский',name:'C++ programmer',salary: 200000,graph:0,study:3,workE:0,typeW:3,img:'https://www.rosphoto.com/images/u/articles/1510/4_8.jpg'},
-            {id:4,nameC:'Касперский',name:'C++ programmer',salary: 200000,graph:0,study:3,workE:0,typeW:3,img:'https://www.rosphoto.com/images/u/articles/1510/4_8.jpg'},
-            {id:5,nameC:'Касперский',name:'C++ programmer',salary: 200000,graph:0,study:3,workE:0,typeW:3,img:'https://www.rosphoto.com/images/u/articles/1510/4_8.jpg'}
-
-        ]
+        this._comp = []
+        this._page = 1
+        this._limit = 4
+        this._totalCount = 0
+        this._sal={}
+        this._stu={}
+        this._gra={}
+        this._wor={}
+        this._typ={}
         makeAutoObservable(this)
     }
 
-    setUs(user){
-        this._us = user
+    setSal(Sa){
+        this._sal = Sa
     }
-    setVac(vac){
-        this._vac = vac
+
+    setStu(St){
+        this._stu = St
     }
+
+    setGra(Gr){
+        this._gra = Gr
+    }
+
+    setWor(We){
+        this._wor = We
+    }
+
+    setTyp(Ty){
+        this._typ = Ty
+    }
+
+    setPage(page) {
+        this._page = page
+    }
+    setTotalCount(count) {
+        this._totalCount = count
+    }
+
     setComp(comp){
         this._comp = comp
     }
 
-    get Us(){
-         return this._us
+    get selectedSal(){
+        return this._sal
     }
-    get Vac(){
-        return this._vac
+
+    get selectedStu(){
+        return this._stu
     }
+
+    get selectedGra(){
+        return this._gra
+    }
+
+    get selectedWor(){
+        return this._wor
+    }
+
+    get selectedTyp(){
+        return this._typ
+    }
+
+    get page() {
+        return this._page
+    }
+
+    get totalCount() {
+        return this._totalCount
+    }
+
+    get limit() {
+        return this._limit
+    }
+
     get Comp(){
         return this._comp
     }

@@ -5,11 +5,20 @@ import {NavLink} from "react-router-dom";
 import {COMPANIES_ROUTE, FINDJOB_ROUTE, WORKERS_ROUTE} from "../utils/consts";
 import {observer} from "mobx-react-lite";
 import '../compstyles/Navstyle.css'
+import {useNavigate} from "react-router-dom";
+import {LOGIN_ROUTE} from "../utils/consts";
 
 
 
 const ROFL = observer(() => {
+
     const {user} = useContext(Context)
+    const navigate = useNavigate()
+
+    const logOut = () => {
+        user.setUser({})
+        user.setIsAuth(false)
+    }
 
     return (
         <Navbar bg="dark" variant="dark">
@@ -22,12 +31,11 @@ const ROFL = observer(() => {
 
                 {user.isAuth ?
                     <Nav className="ml-auto" style={{color: 'white'}}>
-                        <Button variant={"outline-light"}>Админ панель</Button>
-                        <Button variant={"outline-light"} className="mx-lg-2">Выйти</Button>
+                        <Button variant={"outline-light"} className="mx-lg-2" onClick={()=>logOut()}>Выйти</Button>
                     </Nav>
                     :
                     <Nav className="ml-auto" style={{color: 'white'}}>
-                        <Button variant={"outline-light"} onClick={()=>user.setIsAuth(true)}>Авторизация</Button>
+                        <Button variant={"outline-light"} onClick={()=>navigate(LOGIN_ROUTE)}>Авторизация</Button>
                     </Nav>
                 }
             </Container>

@@ -1,31 +1,35 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Button,Form} from "react-bootstrap";
 import {useState} from "react";
 import '../compstyles/SCFilter.css'
+import {Context} from "../index";
+
 
 
 const Filterlist = () => {
-    const [item, setItem] = useState({ kindOfStand: "", another: "another" });
+    const {Company} = useContext(Context)
+    const [gritem, setgrItem] = useState({ Gr: "", another: "another" });
     const [stitem, setstItem] = useState({ St: "", another: "another" });
     const [tyitem, settyItem] = useState({ Ty: "", another: "another" });
     const [weitem, setweItem] = useState({ We: "", another: "another" });
     const [saitem, setsaItem] = useState({ Sa: "", another: "another" });
 
-    const { kindOfStand } = item;
+    const { Gr } = gritem;
     const { St } = stitem;
     const { Ty } = tyitem;
     const { We } = weitem;
     const { Sa } = saitem;
 
-    const handleChange = e => {
+    const handleChangeGr = e => {
         e.persist();
         console.log(e.target.value);
 
-        setItem(prevState => ({
+        setgrItem(prevState => ({
             ...prevState,
-            kindOfStand: e.target.value
+            Gr: e.target.value
         }));
     };
+
     const handleChangeSt = e => {
         e.persist();
         console.log(e.target.value);
@@ -63,13 +67,21 @@ const Filterlist = () => {
         }));
     };
 
-    const handleSubmit = e => {
+    const Trasfer = ()=>{
+        Company.setSal(Number(Sa))
+        Company.setStu(Number(St))
+        Company.setGra(Number(Gr))
+        Company.setWor(Number(We))
+        Company.setTyp(Number(Ty))
+        console.log('TEST FILTERLIST','Sal:',Company.selectedSal,'Stu',Company.selectedStu,'Gra',Company.selectedGra,'Wor',Company.selectedWor,'Typ',Company.selectedTyp)
+        //console.log('TEST FILTERLIST','Sal:',Sa,'Stu',St,'Gra',Gr,'Wor',We,'Typ',Ty)
+    }
+    const HandleSubmit = e => {
         e.preventDefault();
-        alert(`${St}`+`${kindOfStand}`+`${Ty}`+`${We}`+'  '+`${Sa}`);
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={HandleSubmit}>
             <h4>Фильтры</h4>
             <h5 className="mt-5">Уровень дохода</h5>
             <Form.Control
@@ -79,64 +91,62 @@ const Filterlist = () => {
                 onChange={handleChangeSa}
             />
             <h5 className="mt-3">График</h5>
-            <div>
-                <Form.Group controlId="kindOfStand">
-                    <Form.Check
-                        id="form_control"
-                        value="0"
-                        type="radio"
-                        aria-label="radio 1"
-                        label="Не указан"
-                        onChange={handleChange}
-                        checked={kindOfStand === "0"}
-                    />
-                    <Form.Check
-                        id="form_control"
-                        value="1"
-                        type="radio"
-                        aria-label="radio 2"
-                        label="Удалённая работа"
-                        onChange={handleChange}
-                        checked={kindOfStand === "1"}
-                    />
-                    <Form.Check
-                        id="form_control"
-                        value="2"
-                        type="radio"
-                        aria-label="radio 3"
-                        label="Полный день"
-                        onChange={handleChange}
-                        checked={kindOfStand === "2"}
-                    />
-                    <Form.Check
-                        id="form_control"
-                        value="3"
-                        type="radio"
-                        aria-label="radio 4"
-                        label="Сменный график"
-                        onChange={handleChange}
-                        checked={kindOfStand === "3"}
-                    />
-                    <Form.Check
-                        id="form_control"
-                        value="4"
-                        type="radio"
-                        aria-label="radio 4"
-                        label="Вахтовый метод"
-                        onChange={handleChange}
-                        checked={kindOfStand === "4"}
-                    />
-                    <Form.Check
-                        id="form_control"
-                        value="5"
-                        type="radio"
-                        aria-label="radio 4"
-                        label="Гибкий график"
-                        onChange={handleChange}
-                        checked={kindOfStand === "5"}
-                    />
-                </Form.Group>
-            </div>
+            <Form.Group controlId="Gr">
+                <Form.Check
+                    id="form_control"
+                    value="0"
+                    type="radio"
+                    aria-label="radio 1"
+                    label="Не указан"
+                    onChange={handleChangeGr}
+                    checked={Gr === "0"}
+                />
+                <Form.Check
+                    id="form_control"
+                    value="1"
+                    type="radio"
+                    aria-label="radio 2"
+                    label="Удалённая работа"
+                    onChange={handleChangeGr}
+                    checked={Gr === "1"}
+                />
+                <Form.Check
+                    id="form_control"
+                    value="2"
+                    type="radio"
+                    aria-label="radio 3"
+                    label="Полный день"
+                    onChange={handleChangeGr}
+                    checked={Gr === "2"}
+                />
+                <Form.Check
+                    id="form_control"
+                    value="3"
+                    type="radio"
+                    aria-label="radio 4"
+                    label="Сменный график"
+                    onChange={handleChangeGr}
+                    checked={Gr === "3"}
+                />
+                <Form.Check
+                    id="form_control"
+                    value="4"
+                    type="radio"
+                    aria-label="radio 4"
+                    label="Вахтовый метод"
+                    onChange={handleChangeGr}
+                    checked={Gr === "4"}
+                />
+                <Form.Check
+                    id="form_control"
+                    value="5"
+                    type="radio"
+                    aria-label="radio 4"
+                    label="Гибкий график"
+                    onChange={handleChangeGr}
+                    checked={Gr === "5"}
+                />
+            </Form.Group>
             <h5>Образование</h5>
             <Form.Group controlId="St">
                 <Form.Check
@@ -227,7 +237,7 @@ const Filterlist = () => {
                     id="form_control"
                     value="4"
                     type="radio"
-                    aria-label="radio 4"
+                    aria-label="radio 5"
                     label="Проектная работа"
                     onChange={handleChangeTy}
                     checked={Ty === "4"}
@@ -290,7 +300,7 @@ const Filterlist = () => {
                     checked={We === "5"}
                 />
             </Form.Group>
-            <Button variant="outline-dark" type="submit">
+            <Button variant="outline-dark" type="submit" onClick={Trasfer}>
                 Подтвердить
             </Button>
         </form>
