@@ -67,7 +67,7 @@ const Filterlist = () => {
         }));
     };
 
-    const Trasfer = ()=>{
+    const Transfer = ()=>{
         Company.setSal(Number(Sa))
         Company.setStu(Number(St))
         Company.setGra(Number(Gr))
@@ -300,7 +300,7 @@ const Filterlist = () => {
                     checked={We === "5"}
                 />
             </Form.Group>
-            <Button variant="outline-dark" type="submit" onClick={Trasfer}>
+            <Button variant="outline-dark" type="submit" onClick={Transfer}>
                 Подтвердить
             </Button>
         </form>

@@ -4,13 +4,13 @@ import AppRouter from "./components/AppRouter";
 import ROFL from "./components/NavBar";
 import {observer} from "mobx-react-lite";
 import {Context} from "./index";
-//import {useEffect,  useState} from "react";
-//import {Spinner} from "react-bootstrap";
+import {useEffect,  useState} from "react";
+import {Spinner} from "react-bootstrap";
+import {check} from "./http/userAPI";
 
 
 const App = observer(()=>{
     const {user} = useContext(Context)
-    {/*
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         check().then(data => {
@@ -22,7 +22,7 @@ const App = observer(()=>{
     if (loading) {
         return <Spinner animation={"grow"}/>
     }
-    */}
+
     return (
         <BrowserRouter>
             <ROFL/>

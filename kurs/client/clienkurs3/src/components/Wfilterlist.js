@@ -1,31 +1,32 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Button,Form} from "react-bootstrap";
 import {useState} from "react";
 import '../compstyles/SCFilter.css'
+import {Context} from "../index";
 
 
 const WFilterlist = () => {
-    const [item, setItem] = useState({ kindOfStand: "", another: "another" });
+    const [sfitem, setsfItem] = useState({ Sf: "", another: "another" });
     const [stitem, setstItem] = useState({ St: "", another: "another" });
     const [tyitem, settyItem] = useState({ Ty: "", another: "another" });
     const [weitem, setweItem] = useState({ We: "", another: "another" });
     const [saitem, setsaItem] = useState({ Sa: "", another: "another" });
     const [geitem, setgeItem] = useState({ Sa: "", another: "another" });
 
-    const { kindOfStand } = item;
+    const { Sf } = sfitem;
     const { St } = stitem;
     const { Ty } = tyitem;
     const { We } = weitem;
     const { Sa } = saitem;
     const { Ge } = geitem;
 
-    const handleChange = e => {
+    const handleChangeSf = e => {
         e.persist();
         console.log(e.target.value);
 
-        setItem(prevState => ({
+        setsfItem(prevState => ({
             ...prevState,
-            kindOfStand: e.target.value
+            Sf: e.target.value
         }));
     };
     const handleChangeSt = e => {
@@ -74,9 +75,20 @@ const WFilterlist = () => {
         }));
     };
 
+    const {Worker} =useContext(Context)
+    const Transfer = ()=>{
+        Worker.setSal(Number(Sa))
+        Worker.setGen(Number(Ge))
+        Worker.setGra(Number(St))
+        Worker.setWor(Number(We))
+        Worker.setTyp(Number(Ty))
+        Worker.setStf(Number(Sf))
+        console.log('TEST FILTERLIST','Sal:',Worker.selectedSal,'Gen',Worker.selectedGen,'Gra',Worker.selectedGra,'Wor',Worker.selectedWor,'Typ',Worker.selectedTyp,'Stf',Worker.selectedStf)
+        //console.log('TEST FILTERLIST','Sal:',Sa,'Stu',St,'Gra',Gr,'Wor',We,'Typ',Ty)
+    }
+
     const handleSubmit = e => {
         e.preventDefault();
-        alert(`${St}`+`${kindOfStand}`+`${Ty}`+`${We}`+`${Ge}`+'  '+`${Sa}`);
     };
 
     return (
@@ -91,15 +103,15 @@ const WFilterlist = () => {
             />
             <h5 className="mt-3">Статус поиска</h5>
             <div>
-                <Form.Group controlId="kindOfStand">
+                <Form.Group controlId="Sf">
                     <Form.Check
                         id="form_control"
                         value="0"
                         type="radio"
                         aria-label="radio 1"
                         label="Без статуса"
-                        onChange={handleChange}
-                        checked={kindOfStand === "0"}
+                        onChange={handleChangeSf}
+                        checked={Sf === "0"}
                     />
                     <Form.Check
                         id="form_control"
@@ -107,8 +119,8 @@ const WFilterlist = () => {
                         type="radio"
                         aria-label="radio 2"
                         label="Активно ищет работу"
-                        onChange={handleChange}
-                        checked={kindOfStand === "1"}
+                        onChange={handleChangeSf}
+                        checked={Sf === "1"}
                     />
                     <Form.Check
                         id="form_control"
@@ -116,8 +128,8 @@ const WFilterlist = () => {
                         type="radio"
                         aria-label="radio 3"
                         label="Рассматривает предложения"
-                        onChange={handleChange}
-                        checked={kindOfStand === "2"}
+                        onChange={handleChangeSf}
+                        checked={Sf === "2"}
                     />
                     <Form.Check
                         id="form_control"
@@ -125,8 +137,8 @@ const WFilterlist = () => {
                         type="radio"
                         aria-label="radio 4"
                         label="Не ищет работу"
-                        onChange={handleChange}
-                        checked={kindOfStand === "3"}
+                        onChange={handleChangeSf}
+                        checked={Sf === "3"}
                     />
                     <Form.Check
                         id="form_control"
@@ -134,8 +146,8 @@ const WFilterlist = () => {
                         type="radio"
                         aria-label="radio 4"
                         label="Вышел на новое место"
-                        onChange={handleChange}
-                        checked={kindOfStand === "4"}
+                        onChange={handleChangeSf}
+                        checked={Sf === "4"}
                     />
                 </Form.Group>
             </div>
@@ -325,7 +337,7 @@ const WFilterlist = () => {
 
 
             </Form.Group>
-            <Button variant="outline-dark" type="submit">
+            <Button variant="outline-dark" type="submit" onClick={Transfer}>
                 Подтвердить
             </Button>
         </form>

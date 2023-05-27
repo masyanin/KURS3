@@ -2,34 +2,90 @@ import {makeAutoObservable} from "mobx";
 
 export default class WorkerStore{
     constructor() {
-        this._us =[
-            {id:1, email:'test@',passsword:'rofl',role:'USER'},
-            {id:2, email:'test1@mail.ru',passsword:'rofl',role:'USER'}
-        ]
-        this._vac =[
-            {id:1, vac_n:'JS'},
-            {id:2, vac_n:'C++'}
-        ]
         this._work = []
+        this._page = 1
+        this._limit = 4
+        this._totalCount = 0
+        this._sal={}
+        this._gen={}
+        this._gra={}
+        this._wor={}
+        this._typ={}
+        this._stf={}
         makeAutoObservable(this)
     }
 
-    setUs(user){
-        this._us = user
+    setSal(Sa){
+        this._sal = Sa
     }
-    setVac(vac){
-        this._vac = vac
+
+    setGen(Ge){
+        this._gen = Ge
     }
+
+    setGra(St){
+        this._gra = St
+    }
+
+    setWor(We){
+        this._wor = We
+    }
+
+    setTyp(Ty){
+        this._typ = Ty
+    }
+
+    setStf(Sf){
+        this._stf = Sf
+    }
+
+    setPage(page) {
+        this._page = page
+    }
+    setTotalCount(count) {
+        this._totalCount = count
+    }
+
     setWork(work){
         this._work = work
     }
 
-    get Us(){
-        return this._us
+    get selectedSal(){
+        return this._sal
     }
-    get Vac(){
-        return this._vac
+
+    get selectedGen(){
+        return  this._gen
     }
+
+    get selectedGra(){
+        return  this._gra
+    }
+
+    get selectedWor(){
+        return this._wor
+    }
+
+    get selectedTyp(){
+        return this._typ
+    }
+
+    get selectedStf(){
+        return this._stf
+    }
+
+    get page() {
+        return this._page
+    }
+
+    get totalCount() {
+        return this._totalCount
+    }
+
+    get limit() {
+        return this._limit
+    }
+
     get Work(){
         return this._work
     }

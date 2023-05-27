@@ -14,8 +14,14 @@ import Auth from "./pages/Auth";
 import Workerpage from "./pages/Workerpage";
 
 export const authRoutes = [
-
-
+    {
+        path: COMPANYPAGE_ROUTE +'/:id',
+        Component: Companypage
+    },
+    {
+        path: WORKERPAGE_ROUTE +'/:id',
+        Component: Workerpage
+    }
 ]
 export const publicRoutes = [
     {
@@ -38,13 +44,6 @@ export const publicRoutes = [
         path: WORKERS_ROUTE,
         Component: Workers
     },
-    {
-        path: COMPANYPAGE_ROUTE +'/:id',
-        Component: Companypage
-    },
-    {
-        path: WORKERPAGE_ROUTE +'/:id',
-        Component: Workerpage
-    }
+
 
 ]
